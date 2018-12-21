@@ -17,8 +17,12 @@
                     registration.addEventListener('updatefound', () => {
                         const newWorker = registration.installing;
 
-                        // installing, installed, activating, activated
-                        newWorker.state
+                        // installing, installed, activating, activated, redundant
+                        newWorker.state;
+
+                        newWorker.addEventListener('statechange', () => {
+                            console.log(newWorker.state);
+                        })
                     })
                 }).catch( err => {
                     console.error('Error', err);
